@@ -1,0 +1,17 @@
+// Version: 1.0.0
+type Tx =
+  {
+    action : Text;
+    amount : Text;
+    asset : Text;
+    date : Text;
+    fees : Text;
+    interest : Text;
+    price : Text;
+    principle : Text;
+    timestamp : Text
+  };
+actor {
+  stable var tx : [(Int, Tx)];
+  stable var txprin : [(Principal, [Tx])]
+};
