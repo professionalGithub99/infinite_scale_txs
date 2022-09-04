@@ -11,7 +11,7 @@ actor class Archive(_owner:Principal)= this{
     let owner = _owner;
     private var _next_archive:?Archive = null;
     public type TxId = TxId.TxId;
-     var max_size = 50;
+     var max_size = 500000;
      var TxIdFunctions = TxId.Functions;
      var tx_ids:HashMap.HashMap<TxId,Nat> = HashMap.HashMap<TxId,Nat>(5, TxIdFunctions.equal,func(x):Hash.Hash {TxIdFunctions.hash(x)});
       func is_full():Bool{

@@ -44,7 +44,6 @@ actor class Regulator(_owner : Principal) = this {
     var ac = await Archives.Archive(Principal.fromActor(this));
     return ac;
   };  
-
   public func get_or_set_archive_canister():async ArchiveCanister{
     switch(archive_entry){
 	case(?_ac){ return _ac; };
@@ -80,6 +79,7 @@ actor class Regulator(_owner : Principal) = this {
     };
     };
   };
+
   public func add_tx(_txid:TxId):async (T.addTxReceipt,?Principal){
       var a_c = await get_or_set_archive_canister();
       var add_receipt = await a_c.add_tx(_txid);
@@ -96,5 +96,5 @@ actor class Regulator(_owner : Principal) = this {
             return (#TxAdded(p_and_t),set_new);
          };
       };
-      };
+    };
   };

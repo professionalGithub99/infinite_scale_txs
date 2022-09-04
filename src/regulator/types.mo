@@ -134,6 +134,7 @@ module {
      #ArchiveFull:(Principal,TxId.TxId);
      #TxExists:(Principal,TxId.TxId);
      #TxAdded:(Principal,TxId.TxId);
+     #TxError:Text;
   };
 
 };    

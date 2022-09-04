@@ -6,10 +6,11 @@ import Nat64 "mo:base/Nat64";
 import Nat "mo:base/Nat";
 module 
 {
- public type TxId = Nat;
+ public type TxId = Text;
  public object Functions{
-      public func equal(a:TxId, b:TxId):Bool {return (a == b)};
-      public func hash(a:TxId):Hash.Hash{return Hash.hash(a)};
-      public func create_tx_id(_nat:Nat):TxId{return _nat;};
+      public func equal(a:TxId, b:TxId):Bool {return Text.equal(a, b)};
+      public func hash(a:TxId):Hash.Hash{return Text.hash(a)};
+      public func create_tx_id(a:Ledger.BlockIndex, b:Principal):TxId{ var x = ""; x:= Nat64.toText(a)#Principal.toText(b);
+      return x;};
     };
 };
