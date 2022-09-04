@@ -1,7 +1,7 @@
 {
   "canisters": {
 	  "regulator":{
-		  "main":"src/finrisk/regulator.mo",
+		  "main":"src/regulator/regulator.mo",
 		  "type":"motoko"
 	  }
   },

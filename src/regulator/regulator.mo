@@ -1,8 +1,6 @@
 import Result "mo:base/Result";
-import E "mo:base/Error";
 import Array "mo:base/Array";
 import HashMap "mo:base/HashMap";
-import Iter "mo:base/Iter";
 import Principal "mo:base/Principal";
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
@@ -46,6 +44,7 @@ actor class Regulator(_owner : Principal) = this {
     var ac = await Archives.Archive(Principal.fromActor(this));
     return ac;
   };  
+
   public func get_or_set_archive_canister():async ArchiveCanister{
     switch(archive_entry){
 	case(?_ac){ return _ac; };

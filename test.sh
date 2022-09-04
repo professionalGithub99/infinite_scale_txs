@@ -4,11 +4,11 @@ test_name=$1
 
 test_regulator() {
     times=1500
-    i=900
+    i=920
     while [ $i -le $times ]
         do
             let 'i++'
-	    dfx canister --network ic call regulator add_tx "($i)"
+	    dfx canister call regulator add_tx "($i)"
         done
 
 }
