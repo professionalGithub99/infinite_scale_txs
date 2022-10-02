@@ -1,0 +1,36 @@
+type addTxReceipt = 
+ variant {
+   ArchiveFull: record {
+                  principal;
+                  TxId__1;
+                };
+   TxAdded: record {
+              principal;
+              TxId__1;
+            };
+   TxExists: record {
+               principal;
+               TxId__1;
+             };
+ };
+type TxId__2 = text;
+type TxId__1 = text;
+type TxId = text;
+type Regulator = 
+ service {
+   add_tx: (TxId__2) -> (addTxReceipt, opt principal);
+   generate_archive_canister: () -> (ArchiveCanister);
+   get_or_set_archive_canister: () -> (ArchiveCanister);
+   set_next_archive: (principal) -> (opt principal);
+ };
+type ArchiveCanister = 
+ service {
+   add_tx: (TxId) -> (addTxReceipt);
+   set_next_archive: (opt Archive) -> ();
+ };
+type Archive = 
+ service {
+   add_tx: (TxId) -> (addTxReceipt);
+   set_next_archive: (opt Archive) -> ();
+ };
+service : (principal) -> Regulator
